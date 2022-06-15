@@ -1,0 +1,69 @@
+#TODO: Create a letter using starting_letter.txt 
+#for each name in invited_names.txt
+#Replace the [name] placeholder with the actual name.
+#Save the letters in the folder "ReadyToSend".
+
+"""with open('/Users/Aryennh/Desktop/100 Days of Code/day 24/Mail Merge Project Start/Input/Letters/starting_letter.txt',mode ='w') as file :
+    f = open("Input/Names/invited_names.txt","r")
+    x = len(f.readlines())
+    for i in range(x):
+        with open("Input/Letters/starting_letter.txt",mode="a") as let :
+            temp = let.read()0
+            temp.replace('name',f.readlines()[i])
+            buf = open('Output/ReadyToSend/file',mode='w')
+            buf.write(temp)
+
+"""
+placeholer = '[name]'
+with open("Input/Names/invited_names.txt") as name_file :
+    names = name_file.readlines()
+
+
+with open('Input/Letters/starting_letter.txt') as letter_files :
+    let_content = letter_files.read()
+    for name in names :
+        post = name.strip()
+        new_letter = let_content.replace(placeholer,post)
+        with open(f"Output/ReadyToSend/letter_for_{post}.txt",mode = "w") as completed :
+            completed.write(new_letter)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Hint1: This method will help you: https://www.w3schools.com/python/ref_file_readlines.asp
+    #Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
+        #Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
