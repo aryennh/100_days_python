@@ -1,0 +1,60 @@
+"""x = [1,42,5,0,23,4,55,3,15,2,25,6,60,90]
+div_5 = [item for item in x if item%5==0]
+#print(div_5)
+name = "Aryennh"""
+# new_l = [letter for letter in name]
+# print(new_l)
+import random
+
+# sequnces - list,tuples,range,string -> have specific order
+# list comprehension follows order
+
+# condition list comp
+
+"""print(div_5)
+det = ["Alex","Beth","Caroline","Dave","Elanor","Freddddie"]
+x = [i.upper() for i in det if len(i)>4]
+print(x)
+"""
+# dictionary comprehension
+
+"""dict = {
+    1 : 4,
+    3:5,
+    5:9,
+    7:42,
+}
+i
+new_dict = {new_key: new_val for (key,value) in dict.items()}
+print(new_dict)"""
+#names = ["Alex", "Beth", "Caroline", "Dave", "Elanor", "Freddie"]
+"""student_scores = {
+    "Alex" : 89,
+    "Beth" : 31,
+}"""
+'''
+student_scores = {student : random.randint(1,100) for student in names}
+print(student_scores)
+passed = {students:marks for (students,marks) in student_scores.items() if marks < 60}
+print(passed)
+'''
+import pandas
+
+student_dict = {
+    'name': ["Angela", "James", "Lily"],
+    'score': [56, 91, 42],
+
+}
+student_data_frame = pandas.DataFrame(student_dict)
+# print(student_data_frame)
+
+# iter rows - pandas loop method - > allows to loop thru row and nnot columns
+for (index, row) in student_data_frame.iterrows():
+    print(row)
+
+# TODO 1 -> CREATE A DICTIONARY IN FORMAT - > ("A",ALFA),("B",BRAVO)
+
+# TODO 2 - > CREATE A LIST OF CODEWORDS FROM INPUT WORD 6
+
+# FOR FIRST TASK
+#
