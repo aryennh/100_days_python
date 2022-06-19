@@ -1,0 +1,58 @@
+from tkinter import *
+
+# ---------------------------- PASSWORD GENERATOR ------------------------------- #
+
+# ---------------------------- SAVE PASSWORD ------------------------------- #
+
+# ---------------------------- UI SETUP ------------------------------- #
+
+window = Tk()
+window.title("Pomodoro")
+window.config(padx=20,pady=20)
+
+
+#CANVAS
+canvas = Canvas(width = 200 , height = 200)
+photo= PhotoImage(file='logo.png')
+canvas.create_image(100,100,image = photo)
+#timer_text = canvas.create_text(100,130,text="00:00",fill='white',font=(FONT_NAME,35,"bold"))
+canvas.grid(row=0,column=1)
+
+
+website = Label(text="Website")
+website.grid(row=1,column=0)
+
+
+email = Label(text="Email/Username")
+email.grid(row=2,column=0)
+
+
+pswd = Label(text="Password")
+pswd.grid(row=3,column=0)
+
+
+web_text = Entry(width=32)
+web_text.grid(row=1,column=1,columnspan=2)
+web_text.focus()
+
+
+e_text = Entry(width=32)
+e_text.grid(row=2,column=1,columnspan=2)
+
+
+ps_text = Entry(width=21)
+ps_text.grid(row=3,column=1,columnspan=1)
+
+
+g_ps = Button()
+g_ps.config(text="Generate Password")
+g_ps.grid(row=3,column=2)
+
+
+add =Button()
+add.config(text="Add",widt=36)
+add.grid(row=4,column=1,columnspan=2)
+
+
+
+window.mainloop()
