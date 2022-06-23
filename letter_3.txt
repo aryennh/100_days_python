@@ -1,8 +1,0 @@
-Dear [NAME]
-Name: name, dtype: object,
-
-It's your birthday! Have a great day!
-
-All my love,
-
-Angela
