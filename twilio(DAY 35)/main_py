@@ -1,0 +1,31 @@
+#ehX8S5zb4kjET6GehX8S5zb4kjET6G
+from twilio.rest import Client
+import requests
+api_key = "dd290dee9667284e3181e95a22c3f714"
+account_ssid = "AC10bd980916ea06ce8b5d51733d5220ec"
+auth_token = "36a42dfeb098a8cc81a4c6ef8f14aadf"
+#api = https://api.openweathermap.org/data/2.5/onecall?lat=12.9716&lon=77.5946&exclude=%20&appid=dd290dee9667284e3181e95a22c3f714
+x = "https://api.openweathermap.org/data/2.5/onecall"
+weather_params = {
+    'lat' :30.857810 ,
+    'lon':-89.134140 ,
+    'appid' :api_key ,
+     'exclude' : "current,minutely,daily"
+
+}
+response = requests.get(x,params= weather_params)
+dt = response.json()['hourly']
+ls = [dt[x]['weather'][0]['id'] for x in range(12)]
+#print(ls)
+rain =False
+for x in ls :
+    if x < 700 :
+        rain= True
+if rain :
+    client= Client(account_ssid,auth_token)
+    message = client.messages \
+        .create(
+        body="Join Earth's mightiest heroes. Like Kevin Bacon.",
+        from_='=2563054838',
+        to='+919673401786'
+    )
