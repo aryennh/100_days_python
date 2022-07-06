@@ -1,0 +1,57 @@
+import requests
+import datetime as dt
+USERNAME = "aryennh"
+AUTH= "asdfnq2n3qnfnsdo5"
+pixela_endpoint = "https://pixe.la/v1/users"
+GRAPH_ID = "graph123"
+user_params = {
+    'token' : AUTH,
+    'username': USERNAME,
+    'agreeTermsOfService': "yes",
+    "notMinor" : "yes",
+
+}
+#THIS WAS ONLY FOR ACC CREATION AFTER USE COMMENT
+response = requests.post(url= pixela_endpoint,json = user_params)
+print(response.text)
+
+graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
+
+graph_config = {
+    'id': GRAPH_ID,
+    "name": "my coding graph",
+    'unit': "hours",
+    'type': 'float',
+    'color' : "momiji",
+}
+headers = {
+    "X-USER-TOKEN" : AUTH,
+
+}
+
+today = dt.datetime(year=2022,month=7,day=5)
+print(today.strftime("%Y%m%d"))
+
+response = requests.post(url = graph_endpoint,json=graph_config,headers=headers)
+print(response.text)
+
+pop_params = {
+    'date':today.strftime("%Y%m%d"),
+    "quantity":"9.456",
+}
+
+populate_endpoint = "https://pixe.la/v1/users/aryennh/graphs/graph123"
+print("ASD")
+pixel = requests.post(url=populate_endpoint,json=pop_params,headers=headers)
+print(pixel.text)
+#PUT REQUEST
+new_endpoint = f"https://pixe.la/v1/users/{USERNAME}/graphs/{GRAPH_ID}/{today.strftime('%Y%m%d')}"
+new = {
+    'quantity' : '1'
+}
+
+pixel = requests.put(url=new_endpoint,json=new,headers=headers)
+print(pixel.text)
+
+dele = requests.delete(url=new_endpoint,headers=headers)
+print(dele.text)
