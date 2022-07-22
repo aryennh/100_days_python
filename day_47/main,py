@@ -1,0 +1,52 @@
+from bs4 import BeautifulSoup
+import requests
+import smtplib
+
+import lxml
+import urllib.request
+
+password = ""
+EMAIL ="araajjheshk.cs20@rvce.edu.in"
+AMAZON_LINK = "https://www.amazon.com/dp/B07MD52FBC/ref=sbl_dpx_kitchen-electric-cookware_B08GC6PL3D_0"
+
+
+HEADERS = {
+    # "Request Line": "GET / HTTP/1.1",
+    # "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    # "Accept-Encoding": "gzip, deflate",
+    # "Connection": "keep-alive",
+    # "Host": "myhttpheader.com",
+    # "Upgrade-Insecure-Requests": 1,
+    "Accept-Language": "en-US,en;q=0.5",
+    "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0'
+}
+
+response = requests.get(url=AMAZON_LINK, headers=HEADERS).text
+# print(response.content)
+# print(response)
+soup = BeautifulSoup(response, 'lxml')
+price = float(soup.find(name="span", class_="a-price-whole").get_text())
+product_name = soup.find(name="span",attrs={"id":"productTitle"}).getText()
+print(product_name)
+print(price)
+if price < 150 :
+    with smtplib.SMTP('smtp.gmail.com') as connection:
+        connection.starttls()
+        connection.login(user=EMAIL, password=password)
+        connection.sendmail(from_addr=EMAIL,
+                            to_addrs="aryan.kulkarni22@gmail.com",
+                            msg=f"Subject:Product \n\n {product_name} is available for below $150, click on link: \n {AMAZON_LINK} ")
+
+
+
+
+
+
+
+
+
+# webURL = urllib.request.urlopen(AMAZON_LINK)
+# webURL_read = webURL.read()
+# data = BeautifulSoup(webURL_read, "html.parser")
+# product_price = data.find(name="span", class_="a-price-whole").get_text()
+# print(product_price)
